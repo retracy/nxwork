@@ -14,7 +14,15 @@
  * https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin/src/rules
  */
 
+ import {
+	TmplAstContent,
+	TmplAstElement,
+	TmplAstTemplate,
+} from '@angular/compiler';
 import { ESLintUtils } from '@typescript-eslint/utils';
+import {
+	getTemplateParserServices,
+} from '../utils/rule-utilities';
 
 // NOTE: The rule will be available in ESLint configs as "@nrwl/nx/workspace/test-rule"
 export const RULE_NAME = 'test-rule';
@@ -34,6 +42,7 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)({
   },
   defaultOptions: [],
   create(context) {
+		const parserServices = getTemplateParserServices(context);
     return {
       Identifier(node) {
         if (node.name.length < 2) {
