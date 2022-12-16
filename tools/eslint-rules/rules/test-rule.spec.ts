@@ -7,10 +7,5 @@ const ruleTester = new TSESLint.RuleTester({
 
 ruleTester.run(RULE_NAME, rule, {
   valid: [`const example = true;`],
-  invalid: [
-    {
-      code: "var x = 0;",
-      errors: [{messageId: "avoidTerse"}]
-    }
-  ],
+  invalid: [],
 });

@@ -24,7 +24,6 @@
       "files": ["*.ts"],
       "extends": ["plugin:@nrwl/nx/typescript"],
       "rules": {
-        "@nrwl/nx/workspace/test-rule": "warn"
       }
     },
     {
@@ -33,6 +32,13 @@
         "jest": true
       },
       "rules": {}
+    },
+    {
+      "files": ["*.html"],
+      "extends": ["plugin:@nrwl/nx/angular-template"],
+      "rules": {
+        "@nrwl/nx/workspace/test-rule": "error"
+      }
     }
   ]
 }

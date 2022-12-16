@@ -37,18 +37,19 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)({
     },
     schema: [],
     messages: {
-      avoidTerse: "Avoid terse names"
+      testRule: "This is a eslint test"
     },
   },
   defaultOptions: [],
   create(context) {
 		const parserServices = getTemplateParserServices(context);
     return {
-      Identifier(node) {
-        if (node.name.length < 2) {
+      'Element$1'(node: TmplAstElement) {
+        if (node.name === "button") {
+          let loc = parserServices.convertElementSourceSpanToLoc(context, node);
           context.report({
-            node,
-            messageId: "avoidTerse"
+            loc,
+            messageId: "testRule"
           });
         }
       },

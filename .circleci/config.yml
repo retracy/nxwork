@@ -49,7 +49,7 @@ jobs:
       - run:
           name: Test eslint
           command: |
-            npx eslint --no-eslintrc --config ./.eslintrc.test.json "apps/**/*.ts" || true
+            npx eslint --no-eslintrc --config ./.eslintrc.test.json "apps/**/*.html" || true
       - store_artifacts:
           path: ~/repo/lint-results
 
