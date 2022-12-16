@@ -21,11 +21,15 @@
 } from '@angular/compiler';
 import { ESLintUtils } from '@typescript-eslint/utils';
 import {
+	findComponents,
 	getTemplateParserServices,
+	isTmplAstElement,
 } from '../utils/rule-utilities';
 
 // NOTE: The rule will be available in ESLint configs as "@nrwl/nx/workspace/test-rule"
 export const RULE_NAME = 'test-rule';
+
+const criteria: string = 'cxui';
 
 export const rule = ESLintUtils.RuleCreator(() => __filename)({
   name: RULE_NAME,
@@ -37,22 +41,33 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)({
     },
     schema: [],
     messages: {
-      testRule: "This is a eslint test"
+			cxuiComponent: 'Located usage of {{element}}.',
     },
   },
   defaultOptions: [],
   create(context) {
 		const parserServices = getTemplateParserServices(context);
-    return {
-      'Element$1'(node: TmplAstElement) {
-        if (node.name === "button") {
-          let loc = parserServices.convertElementSourceSpanToLoc(context, node);
-          context.report({
-            loc,
-            messageId: "testRule"
-          });
-        }
-      },
-    };
+		return {
+			'Element$1, Template, Content'(
+				node: TmplAstElement | TmplAstTemplate | TmplAstContent,
+			) {
+				let loc;
+				if (isTmplAstElement(node)) {
+					loc = parserServices.convertElementSourceSpanToLoc(context, node);
+				} else {
+					loc = parserServices.convertNodeSourceSpanToLoc(node.sourceSpan);
+				}
+
+				findComponents(node, criteria, false).forEach((n) => {
+					context.report({
+						loc,
+						messageId: 'cxuiComponent',
+						data: {
+							element: n,
+						},
+					});
+				});
+			},
+		};
   },
 });
