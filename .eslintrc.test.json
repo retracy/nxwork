@@ -1,51 +1,52 @@
 {
-	"root": true,
-	"ignorePatterns": [
-		"*.config.ts",
-		"*.spec.ts",
-		"*.po.ts",
-		"*.cy.ts",
-		"*.test.ts",
-		"*.d.ts",
-		"*-e2e"
-	],
-	"plugins": [
-		"@nrwl/nx"
-	],
-	"overrides": [
-		{
-			"files": ["*.ts"],
-			"extends": [
-				"plugin:@nrwl/nx/angular",
-				"plugin:@angular-eslint/template/process-inline-templates"
-			],
-			"rules": {
-				"@typescript-eslint/ban-types": "off",
-				"no-case-declarations": "off",
-				"no-extra-boolean-cast": "off",
-				"no-prototype-builtins": "off",
-				"no-useless-escape": "off",
-				"no-fallthrough": "off",
-				"@typescript-eslint/no-inferrable-types": "off",
-				"@angular-eslint/no-output-native": "off",
-				"@angular-eslint/no-output-on-prefix": "off",
-				"@typescript-eslint/no-empty-function": "off",
-				"@angular-eslint/component-class-suffix": "off",
-				"@angular-eslint/no-host-metadata-property": "off",
-				"@typescript-eslint/member-ordering": "off",
-				"@angular-eslint/no-input-rename": "off",
-				"@angular-eslint/no-output-rename": "off",
-				"@angular-eslint/no-empty-lifecycle-method": "off",
-				"@typescript-eslint/no-non-null-assertion": "off",
-				"@angular-eslint/no-conflicting-lifecycle": "off"
-			}
-		},
-		{
-			"files": ["*.html"],
-      "extends": ["plugin:@nrwl/nx/angular-template"],
-			"rules": {
+  "root": true,
+  "ignorePatterns": [
+    "*.config.ts",
+    "*.spec.ts",
+    "*.po.ts",
+    "*.cy.ts",
+    "*.test.ts",
+    "*.d.ts",
+    "*-e2e"
+  ],
+  "plugins": ["@nrwl/nx"],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "extends": [
+        "plugin:@nrwl/nx/angular",
+        "plugin:@angular-eslint/template/process-inline-templates"
+      ],
+      "rules": {
+        "@typescript-eslint/ban-types": "off",
+        "no-case-declarations": "off",
+        "no-extra-boolean-cast": "off",
+        "no-prototype-builtins": "off",
+        "no-useless-escape": "off",
+        "no-fallthrough": "off",
+        "@typescript-eslint/no-inferrable-types": "off",
+        "@angular-eslint/no-output-native": "off",
+        "@angular-eslint/no-output-on-prefix": "off",
+        "@typescript-eslint/no-empty-function": "off",
+        "@angular-eslint/component-class-suffix": "off",
+        "@angular-eslint/no-host-metadata-property": "off",
+        "@typescript-eslint/member-ordering": "off",
+        "@angular-eslint/no-input-rename": "off",
+        "@angular-eslint/no-output-rename": "off",
+        "@angular-eslint/no-empty-lifecycle-method": "off",
+        "@typescript-eslint/no-non-null-assertion": "off",
+        "@angular-eslint/no-conflicting-lifecycle": "off"
+      }
+    },
+    {
+      "files": ["*.html"],
+      "extends": [
+        "plugin:@nrwl/nx/angular-template",
+        "plugin:@angular-eslint/template/recommended"
+      ],
+      "rules": {
         "@nrwl/nx/workspace/test-rule": "error"
-			}
-		}
-	]
+      }
+    }
+  ]
 }
