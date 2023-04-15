@@ -24,6 +24,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 
       </div>
     </div>
+    <h1>Here is a test</h1>
   `,
   styles: [],
   encapsulation: ViewEncapsulation.None,
